@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Chat Keren</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-page active">
+            <div class="login-box">
+                <h2>Login</h2>
+                <input type="text" id="loginUsername" placeholder="Username" value="annas">
+                <input type="password" id="loginPassword" placeholder="Password" value="annas">
+                <button id="loginBtn">Login</button>
+                <p>Belum punya akun? <a href="#" id="registerLink">Buat akun baru</a></p>
+            </div>
+        </div>
+
+        <div class="register-page">
+            <div class="register-box">
+                <h2>Buat Akun Baru</h2>
+                <input type="text" id="registerUsername" placeholder="Username">
+                <input type="password" id="registerPassword" placeholder="Password">
+                <button id="registerBtn">Daftar</button>
+                <p>Sudah punya akun? <a href="#" id="loginLink">Login</a></p>
+            </div>
+        </div>
+
+        <div class="chat-app">
+            <div class="sidebar">
+                <div class="profile-section">
+                    <img src="https://via.placeholder.com/50" alt="Profil" class="profile-pic">
+                    <span class="profile-name">Annas</span>
+                    <i class="fas fa-cog settings-icon"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari teman...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <ul class="chat-list">
+                    <li class="chat-item active">
+                        <img src="https://via.placeholder.com/40" alt="Avatar">
+                        <div class="chat-info">
+                            <span class="chat-name">Anas</span>
+                            <span class="last-message">Halo apa kabar?</span>
+                        </div>
+                        <span class="message-time">12:00</span>
+                    </li>
+                    <li class="chat-item">
+                        <img src="https://via.placeholder.com/40" alt="Avatar">
+                        <div class="chat-info">
+                            <span class="chat-name">Pengguna Lain</span>
+                            <span class="last-message">Oke, siap!</span>
+                        </div>
+                        <span class="message-time">Kemarin</span>
+                    </li>
+                </ul>
+                <div class="bottom-nav">
+                    <button class="nav-button active"><i class="fas fa-comment"></i> Chat</button>
+                    <button class="nav-button"><i class="fas fa-info-circle"></i> Status</button>
+                    <button class="nav-button"><i class="fas fa-phone"></i> Panggilan</button>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <img src="https://via.placeholder.com/40" alt="Avatar" class="current-chat-avatar">
+                        <span class="current-chat-name">Anas</span>
+                        <i class="fas fa-check-circle verified-icon admin-only"></i> </div>
+                    <div class="chat-header-actions">
+                        <i class="fas fa-video"></i>
+                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="chat-messages">
+                    <div class="message received">
+                        <p>Halo apa kabar?</p>
+                        <span>12:01</span>
+                    </div>
+                    <div class="message sent">
+                        <p>Baik, kamu?</p>
+                        <span>12:02</span>
+                    </div>
+                    <div class="message received media">
+                        <img src="https://via.placeholder.com/150" alt="Gambar Terkirim">
+                        <span>12:03</span>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <button class="attach-button"><i class="fas fa-paperclip"></i></button>
+                    <input type="text" id="messageInput" placeholder="Ketik pesan...">
+                    <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <div class="admin-control-panel">
+                <h3>Admin Control</h3>
+                <ul class="user-list-admin">
+                    <li class="admin-user-item">
+                        <img src="https://via.placeholder.com/30" alt="User">
+                        <span class="admin-username">Pengguna A</span>
+                        <div class="admin-actions">
+                            <button class="ban-btn"><i class="fas fa-ban"></i> Banned</button>
+                            <button class="unban-btn" style="display: none;"><i class="fas fa-unlock"></i> Unban</button>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="admin-user-item">
+                        <img src="https://via.placeholder.com/30" alt="User">
+                        <span class="admin-username">Pengguna B</span>
+                        <div class="admin-actions">
+                            <button class="ban-btn"><i class="fas fa-ban"></i> Banned</button>
+                            <button class="unban-btn" style="display: none;"><i class="fas fa-unlock"></i> Unban</button>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="banned-popup">
+                <div class="banned-content">
+                    <h2>Akun Anda Diblokir</h2>
+                    <p>Akun Anda telah diblokir karena melanggar kebijakan kami.</p>
+                    <button id="closeBannedPopup">Tutup</button>
+                    <button id="reviewBannedPopup">Tinjauan & Kirim Alasan</button>
+                </div>
+            </div>
+
+            <div class="review-banned-popup">
+                <div class="review-banned-content">
+                    <h2>Kirim Alasan Tinjauan</h2>
+                    <textarea id="reviewReason" placeholder="Jelaskan mengapa Anda merasa akun Anda harus dibuka kembali..."></textarea>
+                    <button id="submitReviewReason">Kirim</button>
+                    <button id="cancelReview">Batal</button>
+                </div>
+            </div>
+
+             <div class="status-admin-popup">
+                <div class="status-admin-content">
+                    <h2>Kontrol Status Pengguna</h2>
+                    <div class="user-status-item">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar">
+                        <span class="user-status-name">Pengguna C</span>
+                        <div class="status-toggle">
+                            <i class="fas fa-check-circle green-check active-status"></i>
+                            <i class="fas fa-times-circle red-x"></i>
+                        </div>
+                    </div>
+                    <div class="user-status-item">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar">
+                        <span class="user-status-name">Pengguna D</span>
+                        <div class="status-toggle">
+                            <i class="fas fa-check-circle green-check"></i>
+                            <i class="fas fa-times-circle red-x active-status"></i>
+                        </div>
+                    </div>
+                    <button id="closeStatusAdminPopup">Tutup</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

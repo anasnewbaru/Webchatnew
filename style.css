@@ -1,0 +1,703 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradien keren */
+    color: #333;
+    overflow: hidden; /* Mencegah scroll pada body */
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Penting untuk layout */
+    position: relative;
+}
+
+/* Halaman Login & Register */
+.login-page, .register-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(100%); /* Sembunyikan secara default */
+}
+
+.login-page.active, .register-page.active {
+    transform: translateX(0%); /* Tampilkan saat aktif */
+}
+
+.login-box, .register-box {
+    background-color: #f0f2f5;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2, .register-box h2 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.login-box input, .register-box input {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.login-box input:focus, .register-box input:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+.login-box button, .register-box button {
+    background-color: #2575fc;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-box button:hover, .register-box button:hover {
+    background-color: #1a5acb;
+}
+
+.login-box p, .register-box p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.login-box a, .register-box a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-box a:hover, .register-box a:hover {
+    text-decoration: underline;
+}
+
+/* Aplikasi Chat Utama */
+.chat-app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: #f7f9fc;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #2575fc;
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.settings-icon {
+    margin-left: auto;
+    font-size: 1.3em;
+    color: #666;
+    cursor: pointer;
+}
+
+.search-bar {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: calc(100% - 40px);
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 15px;
+    background-color: #fff;
+}
+
+.search-bar .fa-search {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.chat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.chat-item:hover, .chat-item.active {
+    background-color: #e0eaff;
+}
+
+.chat-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.chat-info {
+    flex-grow: 1;
+}
+
+.chat-name {
+    font-weight: bold;
+    font-size: 1.05em;
+    color: #333;
+}
+
+.last-message {
+    font-size: 0.9em;
+    color: #777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #999;
+    margin-left: 10px;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.bottom-nav .nav-button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #666;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-nav .nav-button i {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+.bottom-nav .nav-button:hover, .bottom-nav .nav-button.active {
+    background-color: #2575fc;
+    color: #fff;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    background-color: #f7f9fc;
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+}
+
+.current-chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.current-chat-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.verified-icon {
+    color: #1da1f2; /* Warna centang biru khas */
+    font-size: 1.2em;
+    margin-left: 8px;
+}
+
+.chat-header-actions i {
+    margin-left: 20px;
+    font-size: 1.3em;
+    color: #666;
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+}
+
+.message span {
+    font-size: 0.75em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 5px;
+    text-align: right;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #e2eafc;
+    border-bottom-left-radius: 5px;
+    color: #333;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: #2575fc;
+    color: #fff;
+    border-bottom-right-radius: 5px;
+}
+
+.message.media img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    background-color: #f7f9fc;
+    align-items: center;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    margin-right: 10px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.chat-input button {
+    background-color: #2575fc;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: #1a5acb;
+}
+
+.attach-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #666;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Admin Control Panel */
+.admin-control-panel {
+    width: 300px;
+    background-color: #f7f9fc;
+    border-left: 1px solid #eee;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%); /* Sembunyikan default */
+    transition: transform 0.5s ease-in-out;
+}
+
+.admin-control-panel.active {
+    transform: translateX(0%); /* Tampilkan saat aktif */
+}
+
+.admin-control-panel h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.user-list-admin {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.admin-user-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-user-item:last-child {
+    border-bottom: none;
+}
+
+.admin-user-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.admin-username {
+    flex-grow: 1;
+    font-weight: bold;
+    color: #333;
+}
+
+.admin-actions button {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.admin-actions .ban-btn {
+    color: #d9534f;
+    border-color: #d9534f;
+}
+
+.admin-actions .ban-btn:hover {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.admin-actions .unban-btn {
+    color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+.admin-actions .unban-btn:hover {
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+/* Toggle Switch (for admin status control) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Popups */
+.banned-popup, .review-banned-popup, .status-admin-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.banned-popup.active, .review-banned-popup.active, .status-admin-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.banned-content, .review-banned-content, .status-admin-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.banned-popup.active .banned-content,
+.review-banned-popup.active .review-banned-content,
+.status-admin-popup.active .status-admin-content {
+    transform: translateY(0);
+}
+
+
+.banned-content h2, .review-banned-content h2, .status-admin-content h2 {
+    color: #d9534f;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.banned-content p {
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.banned-content button, .review-banned-content button, .status-admin-content button {
+    background-color: #2575fc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.banned-content button:hover, .review-banned-content button:hover, .status-admin-content button:hover {
+    background-color: #1a5acb;
+}
+
+.banned-content #closeBannedPopup {
+    background-color: #aaa;
+}
+
+.banned-content #closeBannedPopup:hover {
+    background-color: #888;
+}
+
+.review-banned-content textarea {
+    width: calc(100% - 20px);
+    height: 120px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    resize: vertical;
+}
+
+.review-banned-content #cancelReview {
+    background-color: #aaa;
+}
+
+.review-banned-content #cancelReview:hover {
+    background-color: #888;
+}
+
+/* Status Admin Control Specific */
+.user-status-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.user-status-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.user-status-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.user-status-name {
+    flex-grow: 1;
+    font-weight: bold;
+    color: #333;
+}
+
+.status-toggle i {
+    font-size: 1.8em;
+    margin-left: 10px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.status-toggle i.active-status {
+    opacity: 1;
+}
+
+.status-toggle .green-check {
+    color: #5cb85c;
+}
+
+.status-toggle .red-x {
+    color: #d9534f;
+}
+
+.status-admin-content button {
+    margin-top: 20px;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.admin-only {
+    display: none; /* Default hidden, shown by JS if admin */
+}
